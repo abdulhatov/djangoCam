@@ -18,7 +18,7 @@ def start_stream(request):
             '-rtsp_transport', 'tcp',
             destination_url
         ]
-        ffmpeg_process = subprocess.Popen(command)
+        ffmpeg_process = subprocess.Popen(command, creationflags=subprocess.CREATE_NEW_CONSOLE)
         return HttpResponse("Stream started")
     else:
         return HttpResponse("Stream already running")
